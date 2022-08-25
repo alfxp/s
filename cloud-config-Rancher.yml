@@ -20,7 +20,7 @@ write_files:
       rancher:
         services:
           rancher-server:
-            image: rancher/server:stable
+            image: rancher/server:2.6.7
             ports:
               - 8080:8080
             restart: always
