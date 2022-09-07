@@ -17,17 +17,15 @@ function getCurrentDir() {
 }
 
 function includeDependencies() {
-    # shellcheck source=./setupLibrary.sh
-    echo "${current_dir}/setupLibrary.sh"
-    echo "${current_dir}/function.sh"
-
-    source "${current_dir}/setupLibrary.sh"
+    # shellcheck source=./setupLibrary.sh            
     source "${current_dir}/function.sh"
 }
 
 current_dir=$(getCurrentDir)
 includeDependencies
 output_file="output.log"
+
+includeDependencies2
 
 read -rp "Do you update system? [Y/N] " r1
 if [[ $r1 == [yY] ]]; then
@@ -38,6 +36,8 @@ read -rp "Do you update config SSH? [Y/N] " r2
 if [[ $r2 == [yY] ]]; then
     ConfigSSH
 fi
+
+
 
 #InstallNFS
 #InstallDocker
