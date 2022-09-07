@@ -24,6 +24,8 @@ function includeDependencies() {
     source "function.sh"
     # source *.sh
 }
+#home/acv/s/function.sh
+
 
 current_dir=$(getCurrentDir)
 echo "current_dir-->"+$current_dir
