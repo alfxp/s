@@ -20,12 +20,14 @@ function includeDependencies() {
     # shellcheck source=./setupLibrary.sh            
     source "${current_dir}/function.sh" 
     source "${current_dir}/setupLibrary.sh"
-    source "/setupLibrary.sh"
-    source "/function.sh"
+    source "setupLibrary.sh"
+    source "function.sh"
     # source *.sh
 }
 
 current_dir=$(getCurrentDir)
+echo "current_dir-->"+$current_dir
+
 includeDependencies
 output_file="output.log"
 
