@@ -1,3 +1,16 @@
+function getCurrentDir() {
+    local current_dir="${BASH_SOURCE%/*}"
+    if [[ ! -d "${current_dir}" ]]; then current_dir="$PWD"; fi
+    echo "${current_dir}"
+}
+
+function includeDependencies() {
+    # shellcheck source=./setupLibrary.sh
+    echo "${current_dir}/setupLibrary.sh-"    
+    source "${current_dir}/setupLibrary.sh"    
+}
+
+
 function InstallRKE2Agent(){
     
     echo "InstallRKE2Agent - Rancher Kubernetes Engine"

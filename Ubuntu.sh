@@ -5,6 +5,7 @@
 # git clone https://github.com/alfxp/ubuntu-server-setup.git
 # cd ubuntu-server-setup
 # bash Ubuntu.sh
+# git pull https://github.com/alfxp/ubuntu-server-setup.git  (update directory)
 #**********************************************************************************************************************************************************
 
 set -e
@@ -19,7 +20,7 @@ function includeDependencies() {
     # shellcheck source=./setupLibrary.sh
     echo "${current_dir}/setupLibrary.sh"
     echo "${current_dir}/function.sh"
-    
+
     source "${current_dir}/setupLibrary.sh"
     source "${current_dir}/function.sh"
 }
