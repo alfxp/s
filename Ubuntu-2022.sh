@@ -1,8 +1,15 @@
 #!/bin/bash
 
 #**********************************************************************************************************************************************************
+#
+# Clone this repository into your home directory:
+# cd ~
+# git clone https://github.com/alfxp/ubuntu-server-setup.git	
+# cd ubuntu-server-setup
+# bash Ubuntu-2022.sh
+#
 #**********************************************************************************************************************************************************
-#**********************************************************************************************************************************************************
+
 
 # Update the user account
 # Arguments:
@@ -173,17 +180,7 @@ function revertSudoers() {
 #**********************************************************************************************************************************************************
 #**********************************************************************************************************************************************************
 #**********************************************************************************************************************************************************
-
-#SSH into your server and install git if it is not installed:
-# sudo apt-get update
-# sudo apt-get install git
 	
-#Clone this repository into your home directory:
-# cd ~
-# git clone https://github.com/alfxp/ubuntu-server-setup.git	
-# cd ubuntu-server-setup
-# bash setup.sh
-
 set -e
 
 function InstallRKE2Agent(){
@@ -325,12 +322,12 @@ function InstallPortainer()
 	sudo docker restart portainer
 }
 
-function SetupSSH()
+function ConfigSSH()
 {
-    echo 'SetupSSH'
-    sudo addUserAccount "gtx"
-    disableSudoPassword "gtx"
-    addSSHKey "gtx" "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8XKMCa9s1gryPgnIirnUeYUtb5RVrc+s9usVWwZLQm3bmeKdT6w3OvYc03HrPprHJbiHzonfIEdk+r4RlqpKHTusu5sA8av250B2hgSNXFx9LKO+dow1LJsMslH5Jfd8ILfC082TBYF02JLo/la7QushMfrisMxOy0GFkEan3ujoF0wtdaitTtEXFMATkRCWKLvjIAL5qKperD2C2rG5kiy5OhUEImcrbMZfJfcqSS94f/s6Le46nQh9AbtncWCfTmnBKH2tIC6+mzgPw6qAVn8Uo6QHlvaX0DrcxbglKWVX+RA4VjWHhSQ4xD0qH8iJz4ukVoy1BY9zhx/MRTCcyo/dB4DVT3xsLgc5jx/NrxhaHmUkGnHdpgDZIY9RCMv+y/2yUl0yK4s41Bum+AqFpXLbUu36CxgOhH/WrwYDQIU/t5IKJPEjZg5quvwynn07Q3jbeArEMsMMpeIkVsXAqCVgz6g3/ID1I+3ixwFBv5b3EDwvbnaiN2Vy1lrng9OMl4epAOmz+3WteQMDbbu6aJ/TSzqE/T3EaAIDmn2RStwtjyb0s7Agn1aabSQMidnQ74BxX7k0K5omPd0r0HNRYQgw2JLJ3Xlhtxo2A41vRoXH+FXlUJsxfKe5Y1prNGS8Nr2yUcwEVAd8/MmAaQxX+aSWySFsTPSI37jcNxBLSeQ== rsa-key-20220814"
+    echo 'ConfigSSH'
+    sudo addUserAccount "acv"
+    disableSudoPassword "acv"
+    addSSHKey "acv" "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8XKMCa9s1gryPgnIirnUeYUtb5RVrc+s9usVWwZLQm3bmeKdT6w3OvYc03HrPprHJbiHzonfIEdk+r4RlqpKHTusu5sA8av250B2hgSNXFx9LKO+dow1LJsMslH5Jfd8ILfC082TBYF02JLo/la7QushMfrisMxOy0GFkEan3ujoF0wtdaitTtEXFMATkRCWKLvjIAL5qKperD2C2rG5kiy5OhUEImcrbMZfJfcqSS94f/s6Le46nQh9AbtncWCfTmnBKH2tIC6+mzgPw6qAVn8Uo6QHlvaX0DrcxbglKWVX+RA4VjWHhSQ4xD0qH8iJz4ukVoy1BY9zhx/MRTCcyo/dB4DVT3xsLgc5jx/NrxhaHmUkGnHdpgDZIY9RCMv+y/2yUl0yK4s41Bum+AqFpXLbUu36CxgOhH/WrwYDQIU/t5IKJPEjZg5quvwynn07Q3jbeArEMsMMpeIkVsXAqCVgz6g3/ID1I+3ixwFBv5b3EDwvbnaiN2Vy1lrng9OMl4epAOmz+3WteQMDbbu6aJ/TSzqE/T3EaAIDmn2RStwtjyb0s7Agn1aabSQMidnQ74BxX7k0K5omPd0r0HNRYQgw2JLJ3Xlhtxo2A41vRoXH+FXlUJsxfKe5Y1prNGS8Nr2yUcwEVAd8/MmAaQxX+aSWySFsTPSI37jcNxBLSeQ== rsa-key-20220814"
 
 }
 
@@ -371,7 +368,7 @@ function SetupFail2Ban()
 }
 
 UpdateSystem
-SetupSSH
+ConfigSSH
 InstallNFS
 InstallDocker
 InstallRKE2
@@ -381,4 +378,7 @@ InstallRKE2
 #InstallPortainer
 #SetupFirewallDocker
 #SetupFail2Ban
+
+
+
 
