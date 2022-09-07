@@ -10,7 +10,6 @@ function includeDependencies() {
     source "${current_dir}/setupLibrary.sh"    
 }
 
-
 function InstallRKE2Agent(){
     
     echo "InstallRKE2Agent - Rancher Kubernetes Engine"
