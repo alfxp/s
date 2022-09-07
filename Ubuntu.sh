@@ -28,6 +28,8 @@ function includeDependencies() {
 }
 
 #home/acv/s/function.sh
+
+getCurrentDir
 current_dir=${current_dir}
 includeDependencies
 output_file="output.log"
