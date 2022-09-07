@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Update the user account
 # Arguments:
 #   Account Username
