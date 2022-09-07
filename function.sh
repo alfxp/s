@@ -1,12 +1,3 @@
-function includeDependencies2() {
-    local current_dir="${BASH_SOURCE%/*}"
-    if [[ ! -d "${current_dir}" ]]; then current_dir="$PWD"; fi
-    echo "${current_dir}"
-
-    # shellcheck source=./setupLibrary.sh
-    echo "${current_dir}/setupLibrary.sh-"    
-    source "${current_dir}/setupLibrary.sh"    
-}
 
 function InstallRKE2Agent(){
     

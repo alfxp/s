@@ -13,19 +13,18 @@ set -e
 function getCurrentDir() {
     local current_dir="${BASH_SOURCE%/*}"
     if [[ ! -d "${current_dir}" ]]; then current_dir="$PWD"; fi
-    echo "${current_dir}"
+    echo "current_dir: ${current_dir}"
 }
 
 function includeDependencies() {
     # shellcheck source=./setupLibrary.sh            
     source "${current_dir}/function.sh"
+    source "${current_dir}/setupLibrary.sh"    
 }
 
 current_dir=$(getCurrentDir)
 includeDependencies
 output_file="output.log"
-
-includeDependencies2
 
 read -rp "Do you update system? [Y/N] " r1
 if [[ $r1 == [yY] ]]; then
@@ -38,7 +37,6 @@ if [[ $r2 == [yY] ]]; then
 fi
 
 
-
 #InstallNFS
 #InstallDocker
 #InstallRKE2
@@ -47,3 +45,5 @@ fi
 #InstallPortainer
 #SetupFirewallDocker
 #SetupFail2Ban
+
+
