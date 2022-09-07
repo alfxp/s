@@ -16,18 +16,14 @@ function getCurrentDir() {
         current_dir="$PWD"; 
     fi
 
-    echo "current_dir111: ${current_dir}"
+    echo "current_dir: ${current_dir}"
 }
 
 function includeDependencies() {
     # shellcheck source=./setupLibrary.sh
-    source "${current_dir}/function.sh" 
-    source "${current_dir}/setupLibrary.sh"
-    source "home/acv/s/setupLibrary.sh"
-    source "home/acv/s/function.sh"    
+    source ."${current_dir}/function.sh" 
+    source ."${current_dir}/setupLibrary.sh"    
 }
-
-#home/acv/s/function.sh
 
 getCurrentDir
 current_dir=${current_dir}
