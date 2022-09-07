@@ -18,8 +18,8 @@ function getCurrentDir() {
 
 function includeDependencies() {
     # shellcheck source=./setupLibrary.sh            
-    source "${current_dir}/function.sh"
-    source "${current_dir}/setupLibrary.sh"    
+    source . "${current_dir}/function.sh" "${current_dir}/setupLibrary.sh"
+    # source *.sh
 }
 
 current_dir=$(getCurrentDir)
