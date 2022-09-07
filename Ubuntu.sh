@@ -1,52 +1,45 @@
 #!/bin/bash
+#**********************************************************************************************************************************************************
+# Clone this repository into your home directory:
+# cd ~
+# git clone https://github.com/alfxp/ubuntu-server-setup.git
+# cd ubuntu-server-setup
+# bash Ubuntu.sh
+#**********************************************************************************************************************************************************
 
 set -e
 
-function UpdateSystem()
-{
-	sudo apt update && sudo apt dist-upgrade
+function getCurrentDir() {
+    local current_dir="${BASH_SOURCE%/*}"
+    if [[ ! -d "${current_dir}" ]]; then current_dir="$PWD"; fi
+    echo "${current_dir}"
 }
 
-function Docker() {
-
-	echo 'Docker'
-
-	#Uninstall or delete older versions of Docker
-	sudo apt remove -y docker docker-engine docker.io containerd runc
-	
-	#install Docker
-	sudo apt install -y docker.io 
-
-	#In addition, add the currently logged-in user to the Docker group to enable them to run Docker commands without sudo privileges.
-	sudo usermod -aG docker $USER
-
-	#Then activate the changes to groups.
-	newgrp docker
-
-	#start and enable the Docker daemon.
-	sudo systemctl start docker
-	
-	#Service starts every time during system startup.
-	sudo systemctl enable docker
+function includeDependencies() {
+    # shellcheck source=./setupLibrary.sh
+    source "${current_dir}/setupLibrary.sh"
+    source "${current_dir}/function.sh"
 }
 
-function Rancher()
-{
-	echo 'Rancher'	
-	docker run -d --name=rancher-server --restart=unless-stopped -p 80:8080 -p 443:8081 --privileged rancher/rancher:v2.6.5
-}
+current_dir=$(getCurrentDir)
+includeDependencies
+output_file="output.log"
 
-function Portainer()
-{
-	echo 'Portainer'
-	docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:latest
-	docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+read -rp "Do you update system? [Y/N] " update
+if [[ $update == [yY] ]]; then
+    UpdateSystem
+fi
 
-	echo '#Reiniciando o portainer'
-	sudo docker restart portainer
-}
+read -rp "Do you update config SSH? [Y/N] " config
+if [[ $config == [yY] ]]; then
+    ConfigSSH
+fi
 
-UpdateSystem
-Docker
-Rancher
-Portainer
+#InstallNFS
+#InstallDocker
+#InstallRKE2
+#InstallRKE2Agent #IP do rancher e o token. (# change the Token to the one from rancher1 /var/lib/rancher/rke2/server/node-token)
+#InstallRancher
+#InstallPortainer
+#SetupFirewallDocker
+#SetupFail2Ban
