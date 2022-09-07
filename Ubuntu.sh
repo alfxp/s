@@ -29,6 +29,12 @@ function includeDependencies() {
 
     echo ."${current_dir}/setupLibrary.sh"    
     echo ."${current_dir}/function.sh" 
+
+    for file in * ; do
+        if [ -f "$file" ] ; then
+            . "$file"
+        fi
+    done
 }
 
 getCurrentDir
