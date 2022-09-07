@@ -25,13 +25,13 @@ current_dir=$(getCurrentDir)
 includeDependencies
 output_file="output.log"
 
-read -rp "Do you update system? [Y/N] " update
-if [[ $update == [yY] ]]; then
+read -rp "Do you update system? [Y/N] " r1
+if [[ $r1 == [yY] ]]; then
     UpdateSystem
 fi
 
-read -rp "Do you update config SSH? [Y/N] " config
-if [[ $config == [yY] ]]; then
+read -rp "Do you update config SSH? [Y/N] " r2
+if [[ $r2 == [yY] ]]; then
     ConfigSSH
 fi
 
