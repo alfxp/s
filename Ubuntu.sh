@@ -23,6 +23,11 @@ function includeDependencies() {
     # shellcheck source=./setupLibrary.sh
     source ."${current_dir}/setupLibrary.sh"
     source ."${current_dir}/function.sh"    
+
+    sudo -s
+    source ./function.sh
+    source ./setupLibrary.sh
+    
 }
 
 getCurrentDir
