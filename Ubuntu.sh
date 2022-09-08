@@ -2,10 +2,10 @@
 #**********************************************************************************************************************************************************
 # Clone this repository into your home directory:
 # cd ~
-# git clone https://github.com/alfxp/ubuntu-server-setup.git
+# git clone https://github.com/alfxp/s.git
 # cd ubuntu-server-setup
 # bash Ubuntu.sh
-# git pull https://github.com/alfxp/ubuntu-server-setup.git  (update directory)
+# git pull https://github.com/alfxp/s.git  (update directory)
 #sudo -s
 #**********************************************************************************************************************************************************
 set -e
@@ -21,13 +21,10 @@ function getCurrentDir() {
 }
 
 function includeDependencies() {
+    
     # shellcheck source=./setupLibrary.sh
     source ."${current_dir}/setupLibrary.sh"
-    source ."${current_dir}/function.sh"    
-
-    source ./function.sh
-    source ./setupLibrary.sh
-
+    #source ."${current_dir}/function.sh"
 }
 
 getCurrentDir
