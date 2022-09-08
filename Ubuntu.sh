@@ -6,9 +6,9 @@
 # cd ubuntu-server-setup
 # bash Ubuntu.sh
 # git pull https://github.com/alfxp/ubuntu-server-setup.git  (update directory)
+#sudo -s
 #**********************************************************************************************************************************************************
 set -e
-sudo -s
 
 function getCurrentDir() {
 
