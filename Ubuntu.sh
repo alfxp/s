@@ -22,19 +22,7 @@ function getCurrentDir() {
 function includeDependencies() {
     # shellcheck source=./setupLibrary.sh
     source ."${current_dir}/function.sh" 
-    source ."${current_dir}/setupLibrary.sh"    
-
-    source ./setupLibrary.sh
-    source ./function.sh
-
-    echo ."${current_dir}/setupLibrary.sh"    
-    echo ."${current_dir}/function.sh" 
-
-    for file in * ; do
-        if [ -f "$file" ] ; then
-            . "$file"
-        fi
-    done
+    source ."${current_dir}/setupLibrary.sh" 
 }
 
 getCurrentDir
