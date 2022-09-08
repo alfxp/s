@@ -8,6 +8,7 @@
 # git pull https://github.com/alfxp/ubuntu-server-setup.git  (update directory)
 #**********************************************************************************************************************************************************
 set -e
+sudo -s
 
 function getCurrentDir() {
 
@@ -24,10 +25,9 @@ function includeDependencies() {
     source ."${current_dir}/setupLibrary.sh"
     source ."${current_dir}/function.sh"    
 
-    sudo -s
     source ./function.sh
     source ./setupLibrary.sh
-    
+
 }
 
 getCurrentDir
