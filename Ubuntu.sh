@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #**********************************************************************************************************************************************************
 # Clone this repository into your home directory:
 # cd ~
@@ -11,20 +12,16 @@
 set -e
 
 function getCurrentDir() {
-
     local current_dir="${BASH_SOURCE%/*}"    
     if [[ ! -d "${current_dir}" ]]; then 
         current_dir="$PWD"; 
     fi
-
     echo "current_dir: ${current_dir}"
 }
 
-function includeDependencies() {
-    
-    # shellcheck source=./setupLibrary.sh
+function includeDependencies() {        
     source ."${current_dir}/setupLibrary.sh"
-    #source ."${current_dir}/function.sh"
+    source ."${current_dir}/library.sh"
 }
 
 getCurrentDir
@@ -42,7 +39,6 @@ if [[ $r2 == [yY] ]]; then
     ConfigSSH
 fi
 
-
 #InstallNFS
 #InstallDocker
 #InstallRKE2
@@ -51,6 +47,5 @@ fi
 #InstallPortainer
 #SetupFirewallDocker
 #SetupFail2Ban
-
 
 
