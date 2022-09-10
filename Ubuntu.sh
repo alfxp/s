@@ -39,9 +39,22 @@ if [[ $r2 == [yY] ]]; then
     ConfigSSH
 fi
 
-#InstallNFS
-#InstallDocker
-#InstallRKE2
+read -rp "Do you Install NFS? [Y/N] " r3
+if [[ $r3 == [yY] ]]; then
+    InstallNFS
+fi
+
+read -rp "Do you Install Docker? [Y/N] " r3
+if [[ $r3 == [yY] ]]; then
+    InstallDocker
+fi
+
+read -rp "Do you Install InstallRKE2? [Y/N] " r4
+if [[ $r4 == [yY] ]]; then
+    InstallRKE2
+fi
+
+
 #InstallRKE2Agent #IP do rancher e o token. (# change the Token to the one from rancher1 /var/lib/rancher/rke2/server/node-token)
 #InstallRancher
 #InstallPortainer
