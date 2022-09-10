@@ -187,3 +187,8 @@ function SetupFail2Ban()
     -e SSMTP_TLS=YES \
     crazymax/fail2ban:latest
 }
+
+#install Vi
+function installVim(){
+    apt-get update && apt-get install -y vim
+}
