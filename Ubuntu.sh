@@ -29,6 +29,7 @@ current_dir=${current_dir}
 includeDependencies
 output_file="output.log"
 
+echo 'AllowSSH'
 AllowSSH
 
 read -rp "Do you update system? [Y/N] " r1
