@@ -216,6 +216,9 @@ function AllowSSH(){
     # Disable password login
     sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
 
+    #?
+    sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
+
     # Restart the SSH server
     sudo systemctl restart sshd
 }
