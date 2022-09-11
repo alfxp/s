@@ -195,10 +195,41 @@ function installVim(){
     apt-get update && apt-get install -y vim
 }
 
+
 function AllowSSH(){
 
-    # Vi /etc/ssh/sshd_config
-    sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+    # Create the .ssh directory if it does not exist
+    mkdir -m 700 -p ~/.ssh
+
+    # Import public key
+    curl https://raw.githubusercontent.com/alfxp/s/master/public-ssh.pub >> ~/.ssh/authorized_keys
+
+    # Fix permissions
+    chmod 600 ~/.ssh/authorized_keys
+
+    # Enable pubkey auth
+    sudo sed -ri 's/#?PubkeyAuthentication\s.*$/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+
+    # Disable root login
+    sudo sed -ri 's/#?PermitRootLogin\s.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+
+    # Disable password login
+    sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+    # Restart the SSH server
+    sudo systemctl restart sshd
 }
 
+
+#Config da digital ocean.
+# SyslogFacility AUTH
+# LogLevel INFO
+# LoginGraceTime 120
+# PermitRootLogin yes
+# StrictModes yes
+# X11Forwarding yes
+# X11DisplayOffset 10
+# PasswordAuthentication no
+# PubkeyAuthentication yes
+# ChallengeResponseAuthentication no
 
