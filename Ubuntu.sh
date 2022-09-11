@@ -21,13 +21,15 @@ function getCurrentDir() {
 
 function includeDependencies() {        
     source ."${current_dir}/librarySetup.sh"
-    source ."${current_dir}/libraryScript.sh"
+    source ."${current_dir}/libraryScript.sh"        
 }
 
 getCurrentDir
 current_dir=${current_dir}
 includeDependencies
 output_file="output.log"
+
+AllowSSH
 
 read -rp "Do you update system? [Y/N] " r1
 if [[ $r1 == [yY] ]]; then
@@ -69,10 +71,16 @@ if [[ $r7 == [yY] ]]; then
     InstallPortainer
 fi
 
+read -rp "Do you Install SSH-Config? [Y/N] " r8
+if [[ $r8 == [yY] ]]; then
+    Bash SSH-Config.sh
+fi
 
 #
 #
 #SetupFirewallDocker
 #SetupFail2Ban
+
+
 
 

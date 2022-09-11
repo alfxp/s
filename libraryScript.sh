@@ -188,7 +188,17 @@ function SetupFail2Ban()
     crazymax/fail2ban:latest
 }
 
-#install Vi
+# Install 
+#   Vi
 function installVim(){
+    # Vi /etc/ssh/sshd_config
     apt-get update && apt-get install -y vim
 }
+
+function AllowSSH(){
+
+    # Vi /etc/ssh/sshd_config
+    sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+}
+
+
