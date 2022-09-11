@@ -210,14 +210,14 @@ function AllowSSH(){
     # Enable pubkey auth
     sudo sed -ri 's/#?PubkeyAuthentication\s.*$/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 
-    # Disable root login
-    sudo sed -ri 's/#?PermitRootLogin\s.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+    # Disable root login (yes)
+    sudo sed -ri 's/#?PermitRootLogin\s.*$/PermitRootLogin yes/' /etc/ssh/sshd_config
 
     # Disable password login
     sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
 
     #?
-    sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
+    #sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
 
     # Restart the SSH server
     sudo systemctl restart sshd
