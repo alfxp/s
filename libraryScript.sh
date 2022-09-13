@@ -139,6 +139,7 @@ function InstallPortainer()
 
 # Config
 #   SSH
+#   only lower-case English letters
 function ConfigSSH()
 {
     echo 'ConfigSSH--'
