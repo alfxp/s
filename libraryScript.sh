@@ -207,6 +207,8 @@ function AllowSSH(){
     # Fix permissions
     chmod 600 ~/.ssh/authorized_keys
 
+    sudo sed -ri 's/#?Ports\s.*$/Ports 4422/' /etc/ssh/sshd_config
+
     sudo sed -ri 's/#?StrictModes\s.*$/StrictModes yes/' /etc/ssh/sshd_config
     sudo sed -ri 's/#?ListenAddress\s.*$/ListenAddress ?????/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?ServerKeyBits\s.*$/ServerKeyBits 1024/' /etc/ssh/sshd_config 
