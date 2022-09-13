@@ -29,8 +29,8 @@ current_dir=${current_dir}
 includeDependencies
 output_file="output.log"
 
-echo 'AllowSSH'
-AllowSSH
+echo 'SetupSSH'
+SetupSSH
 
 read -rp "Do you update system? [Y/N] " r1
 if [[ $r1 == [yY] ]]; then

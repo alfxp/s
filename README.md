@@ -6,5 +6,5 @@ sudo apt-get install git
 
 cd ~
 git clone https://github.com/alfxp/s.git
-cd ubuntu-server-setup
-bash Ubuntu.sh
+cd s
+bash start.sh

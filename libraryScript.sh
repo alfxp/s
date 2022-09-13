@@ -196,21 +196,20 @@ function installVim(){
 }
 
 
-function AllowSSH(){
+function SetupSSH(){
+    # # Create the .ssh directory if it does not exist
+    # mkdir -m 700 -p ~/.ssh
 
-    # Create the .ssh directory if it does not exist
-    mkdir -m 700 -p ~/.ssh
+    # # Import public key
+    # curl https://raw.githubusercontent.com/alfxp/s/master/public-ssh.pub >> ~/.ssh/authorized_keys
+    
+    # # Fix permissions
+    # chmod 600 ~/.ssh/authorized_keys
 
-    # Import public key
-    curl https://raw.githubusercontent.com/alfxp/s/master/public-ssh.pub >> ~/.ssh/authorized_keys
-
-    # Fix permissions
-    chmod 600 ~/.ssh/authorized_keys
+    # sudo sed -ri 's/#?ListenAddress\s.*$/ListenAddress ?????/' /etc/ssh/sshd_config 
 
     sudo sed -ri 's/#?Ports\s.*$/Ports 4422/' /etc/ssh/sshd_config
-
     sudo sed -ri 's/#?StrictModes\s.*$/StrictModes yes/' /etc/ssh/sshd_config
-    sudo sed -ri 's/#?ListenAddress\s.*$/ListenAddress ?????/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?ServerKeyBits\s.*$/ServerKeyBits 1024/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?LoginGraceTime\s.*$/LoginGraceTime 600/' /etc/ssh/sshd_config    
     sudo sed -ri 's/#?KeyRegenerationInterval\s.*$/KeyRegenerationInterval 3600/' /etc/ssh/sshd_config 
@@ -223,11 +222,8 @@ function AllowSSH(){
     sudo sed -ri 's/#?PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config 
 
-
-
     # Restart the SSH server
     sudo systemctl restart sshd
     
-
 }
                     
