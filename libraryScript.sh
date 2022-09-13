@@ -81,23 +81,38 @@ function InstallDocker() {
 
 	echo 'InstallDocker'
 
-	#Uninstall or delete older versions of Docker
-	sudo apt-get remove -y docker docker-engine docker.io containerd runc
-	    
-	#install Docker
-	sudo apt-get install -y docker.io
+    # Install Docker Dependencies
+    sudo apt update
+    sudo apt install -y ca-certificates curl gnupg lsb-release
 
-	#In addition, add the currently logged-in user to the Docker group to enable them to run Docker commands without sudo privileges.
-	sudo usermod -aG docker alfredo
+    # Enable Docker Official Repository
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-	#Then activate the changes to groups.
-	newgrp docker
+    # Install Docker with Apt Command
+    sudo apt-get update
+    sudo apt install docker-ce docker-ce-cli containerd.io -y
+
+    sudo usermod -aG docker alfredo
+    newgrp docker
 
 	#start and enable the Docker daemon.
 	sudo systemctl start docker
 	
 	#Service starts every time during system startup.
 	sudo systemctl enable docker
+
+    docker version
+    docker run hello-world
+
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+    docker-compose --version
+    docker-compose version 1.29.2, build cabd5cfb
+
+    docker-compose up -d
+
 }
 
 # Install 
