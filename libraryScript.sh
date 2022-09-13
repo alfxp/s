@@ -193,7 +193,7 @@ function SetupFail2Ban()
 #   Vi
 function installVim(){
     # Vi /etc/ssh/sshd_config
-    apt-get update && apt-get install -y vim
+    sudo apt-get update && apt-get install -y vim
 }
 
 
@@ -209,17 +209,25 @@ function SetupSSH(){
 
     # sudo sed -ri 's/#?ListenAddress\s.*$/ListenAddress ?????/' /etc/ssh/sshd_config 
 
-    sudo sed -ri 's/#?Ports\s.*$/Ports 4422/' /etc/ssh/sshd_config
-    sudo sed -ri 's/#?StrictModes\s.*$/StrictModes yes/' /etc/ssh/sshd_config
-    sudo sed -ri 's/#?ServerKeyBits\s.*$/ServerKeyBits 1024/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?Port\s.*$/Port 4422/' /etc/ssh/sshd_config
+
     sudo sed -ri 's/#?LoginGraceTime\s.*$/LoginGraceTime 600/' /etc/ssh/sshd_config    
-    sudo sed -ri 's/#?KeyRegenerationInterval\s.*$/KeyRegenerationInterval 3600/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?StrictModes\s.*$/StrictModes yes/' /etc/ssh/sshd_config
     sudo sed -ri 's/#?PermitRootLogin\s.*$/PermitRootLogin no/' /etc/ssh/sshd_config 
+
+    sudo sed -ri 's/#?PubkeyAuthentication\s.*$/PubkeyAuthentication yes/' /etc/ssh/sshd_config 
+
+
+    sudo sed -ri 's/#?ServerKeyBits\s.*$/ServerKeyBits 1024/' /etc/ssh/sshd_config 
+    
+    sudo sed -ri 's/#?KeyRegenerationInterval\s.*$/KeyRegenerationInterval 3600/' /etc/ssh/sshd_config 
+    
     sudo sed -ri 's/#?IgnoreRhosts\s.*$/IgnoreRhosts yes/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?IgnoreUserKnownHosts\s.*$/IgnoreUserKnownHosts yes/' /etc/ssh/sshd_config     
-    sudo sed -ri 's/#?PubkeyAuthentication\s.*$/PubkeyAuthentication yes/' /etc/ssh/sshd_config 
+    
     sudo sed -ri 's/#?X11Forwarding\s.*$/X11Forwarding no/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?PrintMotd\s.*$/PrintMotd yes/' /etc/ssh/sshd_config 
+    
     sudo sed -ri 's/#?PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config 
 

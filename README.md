@@ -12,3 +12,6 @@ bash start.sh
 
 git pull https://github.com/alfxp/s.git  (update directory)
 
+vi etc/ssh/sshd_config
+
+
