@@ -83,9 +83,9 @@ function InstallDocker() {
 
 	#Uninstall or delete older versions of Docker
 	sudo apt remove -y docker docker-engine docker.io containerd runc
-	
+	    
 	#install Docker
-	sudo apt install -y docker.io 
+	sudo apt-get install docker.io
 
 	#In addition, add the currently logged-in user to the Docker group to enable them to run Docker commands without sudo privileges.
 	sudo usermod -aG docker alfredo
