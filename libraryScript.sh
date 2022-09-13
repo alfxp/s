@@ -207,38 +207,25 @@ function AllowSSH(){
     # Fix permissions
     chmod 600 ~/.ssh/authorized_keys
 
-    # Enable pubkey auth
-    sudo sed -ri 's/#?PubkeyAuthentication\s.*$/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+    sudo sed -ri 's/#?StrictModes\s.*$/StrictModes yes/' /etc/ssh/sshd_config
+    sudo sed -ri 's/#?ListenAddress\s.*$/ListenAddress ?????/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?ServerKeyBits\s.*$/ServerKeyBits 1024/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?LoginGraceTime\s.*$/LoginGraceTime 600/' /etc/ssh/sshd_config    
+    sudo sed -ri 's/#?KeyRegenerationInterval\s.*$/KeyRegenerationInterval 3600/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?PermitRootLogin\s.*$/PermitRootLogin no/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?IgnoreRhosts\s.*$/IgnoreRhosts yes/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?IgnoreUserKnownHosts\s.*$/IgnoreUserKnownHosts yes/' /etc/ssh/sshd_config     
+    sudo sed -ri 's/#?PubkeyAuthentication\s.*$/PubkeyAuthentication yes/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?X11Forwarding\s.*$/X11Forwarding no/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?PrintMotd\s.*$/PrintMotd yes/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/' /etc/ssh/sshd_config 
+    sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config 
 
-    # Disable root login
-    sudo sed -ri 's/#?PermitRootLogin\s.*$/PermitRootLogin no/' /etc/ssh/sshd_config
 
-    # Disable password login
-    sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
 
     # Restart the SSH server
     sudo systemctl restart sshd
-
-    sudo sed -i 's/#PermitRootLogin.*/PermitRootLogin\ no/' /etc/ssh/sshd_config 
-    sudo  sed -i 's/#PermitUserEnvironment.*/PermitUserEnvironment\ yes/' /etc/ssh/sshd_config 
-    sudo sed -i 's/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/' /etc/ssh/sshd_config 
-    sudo  sed -i 's/#PasswordAuthentication.*/PasswordAuthentication\ no/' /etc/ssh/sshd_config 
-    sudo  sed -i 's/#ChallengeResponse.*/ChallengeResponseAuthentication\ no/' /etc/ssh/sshd_config
     
 
 }
-
-
-
-#Config da digital ocean.
-# SyslogFacility AUTH
-# LogLevel INFO
-# LoginGraceTime 120
-# PermitRootLogin yes
-# StrictModes yes
-# X11Forwarding yes
-# X11DisplayOffset 10
-# PasswordAuthentication no
-# PubkeyAuthentication yes
-# ChallengeResponseAuthentication no
-
+                    
