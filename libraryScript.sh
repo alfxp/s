@@ -88,7 +88,7 @@ function InstallDocker() {
 	sudo apt install -y docker.io 
 
 	#In addition, add the currently logged-in user to the Docker group to enable them to run Docker commands without sudo privileges.
-	sudo usermod -aG docker $USER
+	sudo usermod -aG docker alfredo
 
 	#Then activate the changes to groups.
 	newgrp docker
@@ -227,7 +227,7 @@ function SetupSSH(){
     
     sudo sed -ri 's/#?X11Forwarding\s.*$/X11Forwarding no/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?PrintMotd\s.*$/PrintMotd yes/' /etc/ssh/sshd_config 
-    
+
     sudo sed -ri 's/#?PermitEmptyPasswords\s.*$/PermitEmptyPasswords no/' /etc/ssh/sshd_config 
     sudo sed -ri 's/#?PasswordAuthentication\s.*$/PasswordAuthentication no/' /etc/ssh/sshd_config 
 

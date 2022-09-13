@@ -10,8 +10,10 @@ cd s
 bash start.sh
 
 
-git pull https://github.com/alfxp/s.git  (update directory)
+# update directory)
+git pull https://github.com/alfxp/s.git 
 
-vi etc/ssh/sshd_config
+
+vi /etc/ssh/sshd_config
 
 
