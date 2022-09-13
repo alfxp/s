@@ -29,8 +29,10 @@ current_dir=${current_dir}
 includeDependencies
 output_file="output.log"
 
-echo 'SetupSSH'
-SetupSSH
+read -rp "Do you install Vim? [Y/N] " r0
+if [[ $r1 == [yY] ]]; then
+    installVim
+fi
 
 read -rp "Do you update system? [Y/N] " r1
 if [[ $r1 == [yY] ]]; then
@@ -39,7 +41,7 @@ fi
 
 read -rp "Do you update config SSH? [Y/N] " r2
 if [[ $r2 == [yY] ]]; then
-    ConfigSSH
+    SetupSSH
 fi
 
 read -rp "Do you Install NFS? [Y/N] " r3
@@ -72,16 +74,11 @@ if [[ $r7 == [yY] ]]; then
     InstallPortainer
 fi
 
-read -rp "Do you Install SSH-Config? [Y/N] " r8
-if [[ $r8 == [yY] ]]; then
-    Bash SSH-Config.sh
-fi
 
 #
 #
 #SetupFirewallDocker
 #SetupFail2Ban
-
 
 
 

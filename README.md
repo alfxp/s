@@ -8,3 +8,7 @@ cd ~
 git clone https://github.com/alfxp/s.git
 cd s
 bash start.sh
+
+
+git pull https://github.com/alfxp/s.git  (update directory)
+
