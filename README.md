@@ -7,13 +7,13 @@ sudo apt-get install git
 cd ~
 git clone https://github.com/alfxp/s.git
 cd s
-bash start.sh
-
+sudo bash start.sh
 
 # update directory)
 git pull https://github.com/alfxp/s.git 
 
-
+# sshd_config
 vi /etc/ssh/sshd_config
 
-
+# Best Tutorial
+https://ranchergovernment.com/simple-rke2-longhorn-and-rancher-install

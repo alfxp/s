@@ -126,7 +126,7 @@ function InstallRancher()
     curl -#L https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
     # add needed helm charts
-    helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+    sudo helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
     helm repo add jetstack https://charts.jetstack.io
 
     # still on  rancher1
@@ -155,7 +155,7 @@ function InstallPortainer()
 # Config
 #   SSH
 #   only lower-case English letters
-function ConfigSSH()
+function AddUser()
 {
     echo 'ConfigSSH--'
     addUserAccount "alfredo"
@@ -231,7 +231,6 @@ function SetupSSH(){
     sudo sed -ri 's/#?PermitRootLogin\s.*$/PermitRootLogin no/' /etc/ssh/sshd_config 
 
     sudo sed -ri 's/#?PubkeyAuthentication\s.*$/PubkeyAuthentication yes/' /etc/ssh/sshd_config 
-
 
     sudo sed -ri 's/#?ServerKeyBits\s.*$/ServerKeyBits 1024/' /etc/ssh/sshd_config 
     

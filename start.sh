@@ -1,14 +1,5 @@
 #!/bin/bash
 
-#**********************************************************************************************************************************************************
-# Clone this repository into your home directory:
-# cd ~
-# git clone https://github.com/alfxp/s.git
-# cd ubuntu-server-setup
-# bash Ubuntu.sh
-# git pull https://github.com/alfxp/s.git  (update directory)
-#sudo -s
-#**********************************************************************************************************************************************************
 set -e
 
 function getCurrentDir() {
@@ -29,8 +20,14 @@ current_dir=${current_dir}
 includeDependencies
 output_file="output.log"
 
+
+read -rp "Do you add new user? [Y/N] " c0
+if [[ $c0 == [yY] ]]; then
+    AddUser
+fi
+
 read -rp "Do you install Vim? [Y/N] " r0
-if [[ $r1 == [yY] ]]; then
+if [[ $r0 == [yY] ]]; then
     installVim
 fi
 
