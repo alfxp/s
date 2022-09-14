@@ -20,6 +20,9 @@ current_dir=${current_dir}
 includeDependencies
 output_file="output.log"
 
+sudo -s
+
+removeFloppy
 
 read -rp "Do you add new user? [Y/N] " c0
 if [[ $c0 == [yY] ]]; then
@@ -31,17 +34,17 @@ if [[ $r0 == [yY] ]]; then
     installVim
 fi
 
-read -rp "Do you update system? [Y/N] " r1
+read -rp "Do you update system? [Y/n] " r1
 if [[ $r1 == [yY] ]]; then
     UpdateSystem
 fi
 
-read -rp "Do you update config SSH? [Y/N] " r2
+read -rp "Do you Setup config SSH? [Y/n] " r2
 if [[ $r2 == [yY] ]]; then
     SetupSSH
 fi
 
-read -rp "Do you Install NFS? [Y/N] " r3
+read -rp "Do you Install NFS? [Y/n] " r3
 if [[ $r3 == [yY] ]]; then
     InstallNFS
 fi

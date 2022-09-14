@@ -28,7 +28,7 @@ function InstallRKE2Agent(){
 #   Rancher Kubernetes Engine 2
 function InstallRKE2(){
 
-    echo "InstallRKE2 - Rancher Kubernetes Engine"
+    echo "RKE2 Server Install"
     sudo curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE=server sh -
 
     # start and enable for restarts -
@@ -49,18 +49,20 @@ function InstallRKE2(){
 #   NFS
 function InstallNFS(){
 
-    echo 'InstallNFS'
+    echo 'Install NFS'
 
     # Ubuntu instructions
     # stop the software firewall
-    # systemctl stop ufw
-    # systemctl disable ufw
+    systemctl stop ufw
+    systemctl disable ufw
 
     # get updates, install nfs, and apply
-    sudo apt install nfs-common -y
+    apt update
+    apt install nfs-common -y
+    apt upgrade -y
 
     # clean up
-    sudo apt autoremove -y
+    apt autoremove -y
 
 }
 
@@ -250,3 +252,9 @@ function SetupSSH(){
     
 }
                     
+function removeFloppy{
+    
+    echo "blacklist floppy" | sudo tee /etc/modprobe.d/blacklist-floppy.conf
+    sudo rmmod floppy
+    sudo dpkg-reconfigure initramfs-tools
+}
